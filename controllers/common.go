@@ -6,16 +6,19 @@ import (
 	"net/http"
 	"path"
 	"path/filepath"
+	"source-server/util"
 
 	"github.com/gin-gonic/gin"
 )
 
 func GetParams(ctx *gin.Context) {
 	fmt.Print("hello world")
+	util.LoadConfig("../conf/user.conf")
 	ctx.String(200, "success hhh")
 }
 
 func Upload(ctx *gin.Context) {
+	util.LoadConfig("../conf/user.conf")
 	// 单文件
 	file, _ := ctx.FormFile("file")
 	log.Println(file.Filename)
